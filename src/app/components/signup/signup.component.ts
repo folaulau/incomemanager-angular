@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+
+  constructor(private userService: UserService) { 
+    this.password = "Test1234!";
+    this.firstName = "Folau";
+    this.lastName = "Kaveinga";
+    this.email = "folaudev@gmail.com";
+  }
+
+  signUp():void{
+    console.log("signing up...");
+    const id = Math.floor(Math.random() * 100000) + 1;
+    this.userService.signUp("folaudev+"+id+"@gmail.com",this.password, this.firstName, this.lastName).subscribe(sessionData => {
+      console.log("response from server");
+      console.log(sessionData);
+      localStorage.setItem("token", sessionData.token);
+    });
+    console.log("sign up done!")
+  }
 
   ngOnInit() {
   }
