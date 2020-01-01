@@ -11,6 +11,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { IncomeComponent } from './components/funnel/income/income.component';
+import { ExpenseComponent } from './components/funnel/expense/expense.component';
+import { AddressComponent } from './components/funnel/address/address.component';
 
 
 
@@ -21,7 +25,11 @@ import { FooterComponent } from './components/footer/footer.component';
     SignupComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LandingComponent,
+    IncomeComponent,
+    ExpenseComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

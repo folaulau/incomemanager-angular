@@ -34,13 +34,11 @@ export class UserService {
     console.log(`calling api to login...${email}...${password}`);
     const url = 'http://localhost:8082/users/login';
 
-    
-
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.httpClient.post<SessionData>(url, {}, httpOptions)
+    return this.httpClient.post<SessionData>(url, {'email':email,'password':password}, httpOptions)
     .pipe(
       tap(data => console.log(data)),
       catchError((error: HttpErrorResponse) => {
