@@ -1,1 +1,66 @@
-<p>income works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <br>
+            <form>
+                <div class="row" *ngFor="let income of incomes;let i = index;">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="companyName">Company Name</label>
+                                    <input type="text" [(ngModel)]="income.companyName" class="form-control" id="companyName" aria-describedby="companyName" placeholder="" name="incomes{{i}}.companyName">
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="recurrence">Recurrence</label>
+                                    <select class="form-control" id="recurrence" name="recurrence" [(ngModel)]="income.recurrence">
+
+                                        <option>Every two weeks</option>
+                                        <option>Weekly</option>
+                                     
+                                        <option>Twice a month</option>
+                                        <option>Once a month</option>
+                                    </select>
+                                    <small id="emailHelp" class="form-text text-muted">How often you get paid.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="paycheckNetAmount">Paycheck Net Amount</label>
+                                    <input type="text" [(ngModel)]="income.paycheckNetAmount" class="form-control" name="paycheckNetAmount" id="paycheckNetAmount" aria-describedby="paycheckNetAmount" placeholder="">
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-primary"(click)="save()">save</button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-outline-primary" (click)="add()">add</button>
+                    </div>
+                </div>
+                {{incomes}}
+                <br>
+                num of incomes: {{incomes.length}}
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+        <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+    </div>
+</div>

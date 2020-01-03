@@ -1,5 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService, private router: Router) { 
     this.password = "Test1234!";
     this.firstName = "Folau";
     this.lastName = "Kaveinga";
@@ -27,6 +28,8 @@ export class SignupComponent implements OnInit {
       console.log("response from server");
       console.log(sessionData);
       localStorage.setItem("token", sessionData.token);
+
+      this.router.navigate(['/fn/income']);
     });
     console.log("sign up done!")
   }
