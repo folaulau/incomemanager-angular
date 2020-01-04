@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor(private userService: UserService, private route: ActivatedRoute,  private router: Router) {
-    this.email = "folaudev+94159@gmail.com";
+    this.email = "folaudev+80379@gmail.com";
     this.password = "Test1234!";
   }
 

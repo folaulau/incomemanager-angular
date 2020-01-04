@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Expense } from 'src/app/classes/expense';
+import { Router } from '@angular/router';
+import { ExpenseService } from 'src/app/services/expense.service';
 
 @Component({
   selector: 'app-expense',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpenseComponent implements OnInit {
 
-  constructor() { }
+  expenses: Expense[] = [new Expense()];
+  
+  constructor(private router: Router, private expenseService: ExpenseService) { }
 
   ngOnInit() {
   }
 
+  add(): void{
+    this.expenses[this.expenses.length] = new Expense();
+  }
+
+  save(): void{
+    console.log("saving income...");
+    console.log(this.expenses);
+
+    this.expenseService.save(this.expenses).subscribe(savedExpenses => {
+      console.log("response from server");
+      console.log(savedExpenses);
+      this.router.navigate(['/fn/profile']);
+    });
+  }
 }

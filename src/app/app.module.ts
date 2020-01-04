@@ -14,7 +14,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { IncomeComponent } from './components/funnel/income/income.component';
 import { ExpenseComponent } from './components/funnel/expense/expense.component';
-import { AddressComponent } from './components/funnel/address/address.component';
+import { ProfileComponent } from './components/funnel/profile/profile.component';
+import { DashComponent } from './components/dash/dash.component';
 
 
 
@@ -29,7 +30,8 @@ import { AddressComponent } from './components/funnel/address/address.component'
     LandingComponent,
     IncomeComponent,
     ExpenseComponent,
-    AddressComponent
+    ProfileComponent,
+    DashComponent
   ],
   imports: [
     BrowserModule,

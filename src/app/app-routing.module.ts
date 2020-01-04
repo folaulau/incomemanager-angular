@@ -1,4 +1,5 @@
-import { AddressComponent } from './components/funnel/address/address.component';
+import { DashComponent } from './components/dash/dash.component';
+import { ProfileComponent } from './components/funnel/profile/profile.component';
 import { ExpenseComponent } from './components/funnel/expense/expense.component';
 import { IncomeComponent } from './components/funnel/income/income.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -15,14 +16,15 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'fn/income', component: IncomeComponent },
   { path: 'fn/expense', component: ExpenseComponent },
-  { path: 'fn/address', component: AddressComponent },
+  { path: 'fn/profile', component: ProfileComponent },
+  { path: 'dash', component: DashComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes,
-    { enableTracing: true, useHash: true  })
+    { useHash: true  })
   ],
   exports: [RouterModule]
 })

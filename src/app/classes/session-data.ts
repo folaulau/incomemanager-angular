@@ -2,5 +2,9 @@ export class SessionData {
     token: string;
     email: string;
     userUuid: string;
-    name: string;
+    accountUuid: string;
+    firstName: string;
+    lastName: string;
+    profileSetupStatus: string;
+    primary: boolean;
 }
