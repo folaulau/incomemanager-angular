@@ -1,3 +1,4 @@
+import { SessionStorage } from './../classes/session-storage';
 import { Stats } from './../classes/stats';
 import { User } from 'src/app/classes/user';
 import { SessionData } from './../classes/session-data';
@@ -10,9 +11,8 @@ import { catchError, tap } from 'rxjs/internal/operators';
   providedIn: 'root'
 })
 export class UserService {
+
   
-
-
   constructor(private  httpClient: HttpClient) {
   }
 
@@ -64,7 +64,7 @@ export class UserService {
 
   }
 
-  updateProfile( user: User): Observable<User> {
+  updateProfile( user: User, funnel: string): Observable<User> {
     console.log(`updating profile`);
     const url = 'http://localhost:8082/users/profile';
 
@@ -72,6 +72,10 @@ export class UserService {
       headers: new HttpHeaders({ 'token': localStorage.getItem('token'),'Content-Type': 'application/json' })
     };
 
+    if(funnel!=undefined && funnel!=null && funnel!==""){
+      httpOptions['params'] = new HttpParams().set('funnel', funnel);
+    }
+    
     return this.httpClient.put<User>(url, user, httpOptions)
     .pipe(
       tap(data => console.log(data)),
@@ -86,14 +90,31 @@ export class UserService {
     console.log(`get account stats`);
     const url = 'http://localhost:8082/users/account/stats';
 
-    const sessionData = JSON.parse(localStorage.getItem('sessionData'));
-
     const httpOptions = {
       headers: new HttpHeaders({ 'token': localStorage.getItem('token'),'Content-Type': 'application/json' }),
-      params: new HttpParams().set('accountUuid', sessionData.accountUuid)
+      params: new HttpParams().set('accountUuid', SessionStorage.getAccountUuid())
     };
 
     return this.httpClient.get<Stats>(url, httpOptions)
+    .pipe(
+      tap(data => console.log(data)),
+      catchError((error: HttpErrorResponse) => {
+        return throwError(
+          'Something bad happened; please try again later.' + error.message);
+      })
+    );
+  }
+
+  getProfile(): Observable<User> {
+    console.log(`get account stats`);
+    const url = 'http://localhost:8082/users/profile';
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'token': SessionStorage.getAuthToken(),'Content-Type': 'application/json' }),
+      params: new HttpParams().set('uuid', SessionStorage.getUuid())
+    };
+
+    return this.httpClient.get<User>(url, httpOptions)
     .pipe(
       tap(data => console.log(data)),
       catchError((error: HttpErrorResponse) => {

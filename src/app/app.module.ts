@@ -16,6 +16,9 @@ import { IncomeComponent } from './components/funnel/income/income.component';
 import { ExpenseComponent } from './components/funnel/expense/expense.component';
 import { ProfileComponent } from './components/funnel/profile/profile.component';
 import { DashComponent } from './components/dash/dash.component';
+import { SpendingComponent } from './components/spending/spending.component';
+import { SideNavComponent } from './layouts/dash/side-nav/side-nav.component';
+import { BreadcrumbComponent } from './layouts/dash/breadcrumb/breadcrumb.component';
 
 
 
@@ -31,7 +34,10 @@ import { DashComponent } from './components/dash/dash.component';
     IncomeComponent,
     ExpenseComponent,
     ProfileComponent,
-    DashComponent
+    DashComponent,
+    SpendingComponent,
+    SideNavComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

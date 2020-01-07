@@ -1,6 +1,8 @@
+import { SessionStorage } from './../../classes/session-storage';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { FunnelService } from 'src/app/services/funnel.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +13,8 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private userService: UserService, private route: ActivatedRoute,  private router: Router) {
-    this.email = "folaudev+80379@gmail.com";
+  constructor(private userService: UserService, private funnelService: FunnelService, private route: ActivatedRoute,  private router: Router) {
+    this.email = "folaudev+30672@gmail.com";
     this.password = "Test1234!";
   }
 
@@ -24,8 +26,13 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.email,this.password).subscribe(sessionData => {
       console.log("response from server");
       console.log(sessionData);
-      localStorage.setItem("token", sessionData.token);
-      this.router.navigate(['/fn/income']);
+      
+      SessionStorage.startSession(sessionData);
+
+      const destination = this.funnelService.getFunnel(sessionData.profileSetupStatus);
+
+      this.router.navigate([destination]);
+
     });
     console.log("login done!");
   }

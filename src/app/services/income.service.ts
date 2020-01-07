@@ -1,6 +1,6 @@
 import { Income } from './../classes/income';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class IncomeService {
 
   }
 
-  public save(incomes: Income[]) : Observable<Income[]> {
+  public save(incomes: Income[], funnel: string) : Observable<Income[]> {
     console.log(`saving income`);
     const url = 'http://localhost:8082/incomes';
 
@@ -25,6 +25,10 @@ export class IncomeService {
         }
       )
     };
+
+    if(funnel!=undefined && funnel!=null && funnel!==""){
+      httpOptions['params'] = new HttpParams().set('funnel', funnel);
+    }
 
     return this.httpClient.post<Income[]>(url, incomes, httpOptions)
     .pipe(

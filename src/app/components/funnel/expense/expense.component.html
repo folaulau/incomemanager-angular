@@ -52,7 +52,7 @@
                         <button type="button" class="btn btn-outline-primary" (click)="add()">add</button>
                     </div>
                 </div>
-                {{expenses}}
+                {{expenses | json}}
                 <br>
                 num of expenses: {{expenses.length}}
             </form>

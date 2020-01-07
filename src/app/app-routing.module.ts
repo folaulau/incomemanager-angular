@@ -1,3 +1,4 @@
+import { SpendingComponent } from './components/spending/spending.component';
 import { DashComponent } from './components/dash/dash.component';
 import { ProfileComponent } from './components/funnel/profile/profile.component';
 import { ExpenseComponent } from './components/funnel/expense/expense.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'fn/expense', component: ExpenseComponent },
   { path: 'fn/profile', component: ProfileComponent },
   { path: 'dash', component: DashComponent },
+  { path: 'spending', component: SpendingComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -1,39 +1,53 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            Income: ${{stats.totalIncome}}
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            Life: ${{stats.life}}
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            Estimated Expenses: ${{stats.totalEstimatedExpense}}
+<div class="row">
+    <div class="col">
+        <br/>
+        <div class="row" style="padding: 10px;"><!--border: 5px blue solid; -->
+            <div class="col-3">
+                <div class="row">
+                    <div class="col">
+                        <app-side-nav></app-side-nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col">
+                        Income: ${{stats.totalIncome}}
             
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            Spending: ${{stats.totalSpending}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Life: ${{stats.life}}
             
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            Savings: ${{stats.totalSaving}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Estimated Expenses: ${{stats.totalEstimatedExpense}}
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Spending: ${{stats.totalSpending}}
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Savings: ${{stats.totalSaving}}
+                        
+                    </div>
+                </div>
             
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            Status: {{stats.status}}
-            
+                <div class="row">
+                    <div class="col">
+                        Status: {{stats.status}}
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

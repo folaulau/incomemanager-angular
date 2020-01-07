@@ -1,3 +1,5 @@
+import { SessionStorage } from './../../../classes/session-storage';
+import { Funnel } from './../../../enums/funnel.enum';
 import { Component, OnInit } from '@angular/core';
 import { Expense } from 'src/app/classes/expense';
 import { Router } from '@angular/router';
@@ -25,9 +27,10 @@ export class ExpenseComponent implements OnInit {
     console.log("saving income...");
     console.log(this.expenses);
 
-    this.expenseService.save(this.expenses).subscribe(savedExpenses => {
+    this.expenseService.save(this.expenses, Funnel.EXPENSE).subscribe(savedExpenses => {
       console.log("response from server");
       console.log(savedExpenses);
+      SessionStorage.setProfileSetupStatus(Funnel.EXPENSE);
       this.router.navigate(['/fn/profile']);
     });
   }

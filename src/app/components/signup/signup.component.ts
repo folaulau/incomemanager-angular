@@ -1,3 +1,4 @@
+import { SessionStorage } from './../../classes/session-storage';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -27,8 +28,9 @@ export class SignupComponent implements OnInit {
     this.userService.signUp("folaudev+"+id+"@gmail.com",this.password, this.firstName, this.lastName).subscribe(sessionData => {
       console.log("response from server");
       console.log(sessionData);
-      localStorage.setItem("token", sessionData.token);
-
+      
+      SessionStorage.startSession(sessionData);
+      
       this.router.navigate(['/fn/income']);
     });
     console.log("sign up done!")
